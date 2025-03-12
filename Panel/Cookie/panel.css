@@ -1,0 +1,85 @@
+.shadow-box {
+  background-color: #fff;
+  border-radius: 10px; /* Optional rounded corners */
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.0005); /* Adjust shadow properties */
+}
+
+.table-demir{
+  width:100%;
+  border: 1px solid #00000018;
+}
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+
+.w-fill{
+  width: 100%;
+}
+
+.btn-edit{
+  background-color: #343a40;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.error-box{
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.success-box{
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  background-color: rgba(0, 255, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 46px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 50%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+btn-primary{
+  background-color: green;
+}
+
+btn-primary:hover{
+  background-color: yellowgreen;
+}
+
+.input-sm, .form-select-sm {
+  height: 100%; /* Adjust as needed */
+  min-height: 300px; /* Ensures it's at least visible */
+}
+
+.active{
+  display: block;
+}

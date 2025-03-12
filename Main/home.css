@@ -1,0 +1,60 @@
+.shadow-box {
+    background-color: #fff;
+    border-radius: 10px; /* Optional rounded corners */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Adjust shadow properties */
+  }
+  
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+.btn-primary {
+  text-align: left;
+  font-weight: bold;
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #ffffff00; /*set the color you want here*/
+  transition: 0.2s;
+}
+.btn-primary:hover{
+  color: #000000;
+  background-color: #cacaca;
+  border-color: #ffffff00; /*set the color you want here*/
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.video-container {
+  max-width: 800px;  
+  width: 100%;       
+  margin: auto;      
+}
+
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 46px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 50%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+.table{
+  border: 2px solid black !important;
+  color: green !important;
+}
