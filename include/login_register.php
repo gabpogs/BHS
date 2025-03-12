@@ -48,7 +48,7 @@
 
             if(empty($cookie['user'])){
                 $role = $cookie['role'];
-                $conn->query("UPDATE cookies SET user = '$email' WHERE cookie = '".$cookie['cookie']."'");
+                $conn->query("UPDATE cookies SET user = '$email', level = 1 WHERE cookie = '".$cookie['cookie']."'");
                 
             }elseif($cookie['user'] == '-'){
                 $role = $cookie['role'];
@@ -66,7 +66,7 @@
 
         $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $conn->query("INSERT INTO users(username, email, password, role, status, achievement) VALUES ('$username', '$email', '$hashedpassword', '$role', 'enable', '1')");
+        $conn->query("INSERT INTO users(username, email, password, role, status, achievement) VALUES ('$username', '$email', '$hashedpassword', '$role', 'enabled', '1')");
         
         foreach($_SESSION as $key => $val)
         {

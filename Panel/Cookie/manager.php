@@ -6,6 +6,7 @@
         $id = $_POST['edit_id'];
         $cookie = $_POST['cookie'];
         $email = $_POST['user'];
+        $level = $_POST['level'];
 
         if (isset($_POST['role_select'])){
             $role = strtolower($_POST['role_select']);
@@ -32,7 +33,7 @@
         if ($result->num_rows > 0){
             $cookie_data = $result->fetch_assoc();
             if(!empty($cookie_data)){
-                $conn->query("UPDATE cookies SET cookie = '$cookie', user = '$email', role = '$role' WHERE id = '".$cookie_data['id']."'");
+                $conn->query("UPDATE cookies SET cookie = '$cookie', user = '$email', role = '$role', level = '$level' WHERE id = '".$cookie_data['id']."'");
             }
         }
         header("Location: ./Panel.php");

@@ -53,6 +53,17 @@
       return 'readonly';
     }
   }
+  
+  function getinfo($user) {
+    require_once '../../include/config.php';
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user_data = $result->fetch_assoc();
+    return $user_data;
+
+  }
 
   require_once '../../include/config.php';
 
@@ -214,6 +225,11 @@
                 <label for="user">USER</label>
               </div>
 
+              <div class="form-floating mb-3">
+                <input name="level" type="int" class="form-control" id="edit_level" placeholder="INPUT LEVEL" value="">
+                <label for="level">LEVEL</label>
+              </div>
+
               <select name="role_select" <?= adminOption($_SESSION['log-role']); ?> class="form-select p-2" id="edit_role" aria-label="Default select example" require>
                 <option value="1">CLIENT</option>
                 <option value="2" >ADMIN</option>
@@ -239,7 +255,7 @@
                 <th>COOKIE</th>
                 <th>USER</th>
                 <th>ROLE</th>
-                <th>ACHIEVEMENT</th>
+                <th>LEVEL</th>
                 <th>EDIT<th>
             </tr>
         </thead>
@@ -253,10 +269,10 @@
                       <td class="align-middle">'.$row['cookie'].'</td>
                       <td class="align-middle">'.strtoupper($row['user']).'</td>
                       <td class="align-middle">'.strtoupper($row['role']).'</td>
-                      <td class="align-middle"></td>
+                      <td class="align-middle">'.strtoupper($row['level']).'</td>
                       <td class="align-middle w-15 m-0 p-0"> 
                       <button class="btn btn-outline-warning btn-sm  w-75 p-0" style="display: block;" data-bs-toggle="modal" 
-                      data-bs-target="#editCookie" data-id="'.$row['id'].'" data-cookie="'.$row['cookie'].'" data-email="'.$row['user'].'" data-role="'.$row['role'].'" data.achievement="'.$row2['achievement'].'">
+                      data-bs-target="#editCookie" data-id="'.$row['id'].'" data-cookie="'.$row['cookie'].'" data-email="'.$row['user'].'" data-role="'.$row['role'].'" data-level="'.$row['level'].'">
                           CONFIG
                       </button>
                       </td>
@@ -283,7 +299,7 @@
                 <th>COOKIE</th>
                 <th>USER</th>
                 <th>ROLE</th>
-                <th>ACHIEVEMENT</th>
+                <th>LEVEL</th>
                 <th>EDIT<th>
             </tr>
         </tfoot>
@@ -309,14 +325,15 @@
               var userId = button.getAttribute('data-id');
               var userCookie = button.getAttribute('data-cookie');
               var userEmail = button.getAttribute('data-email');
-              var userAchievement = button.getAttribute('data-achievement')
+              var userLevel = button.getAttribute('data-level')
               var userRole = button.getAttribute('data-role');
 
               // Fill modal fields
-              document.getElementById('editModalLongTitle').innerHTML = "EDIT COOKIE - ID: "+userId +" "+ userAchievement;
+              document.getElementById('editModalLongTitle').innerHTML = "EDIT COOKIE - ID: "+userId;
               document.getElementById('edit_id').value = userId;
               document.getElementById('edit_cookie').value = userCookie;
               document.getElementById('edit_user').value = userEmail;
+              document.getElementById('edit_level').value = userLevel;
               
               if (userRole == "head admin"){
                 document.getElementById('edit_role').value = "3";
